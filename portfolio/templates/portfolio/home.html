@@ -1,0 +1,67 @@
+{% extends 'portfolio/base.html' %}
+
+
+{% block show %}
+{% load static %}
+
+<style>
+    #logo{
+        float: left;
+        height: 130px;
+        width: 130px;
+        border-radius: 50%;
+        margin-top: -50px;
+        margin-left: 20px;
+    }
+
+    
+
+    .container-fluid{
+        display: table-row-group;
+    }
+    
+    
+
+    #project_img{
+        height: 300px;
+        width: 600px;
+    }
+
+    #container, #project_title, #project_desc{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+
+    #container{
+        margin-top: 50px;    
+    }
+    
+</style>
+
+
+
+
+
+{% for project in data %}
+
+        <div id="container">
+            <img src="{{ project.image.url}}" id="project_img" ></div>
+            <h2 id="project_title">{{ project.title }}</h2></div>
+            <p id="project_desc">{{ project.description|safe }}</p></div>
+            {% if project.url %}
+            <a href="{{ project.url}}">Link</a></div>
+            {% endif  %}
+        </div>
+      
+
+{% endfor %}
+
+{% endblock %}
+
+
+ 
+
+
+
+

@@ -1,0 +1,34 @@
+{% extends 'portfolio/base.html' %}
+
+
+{% block show %}
+
+<style>
+    #title{
+        text-decoration: none;
+        color: black;
+    }
+
+    .blog_content{
+        margin-top: 30px;
+        width: 500px;
+        text-align: center;
+        margin-left: 34%;
+    }
+</style>
+
+<h2 style="text-align: center;">Santhi Raju had written {{ data.count }} blog{{ data.count|pluralize }}</h2>
+
+
+{% for blog in data %}
+<div class="blog_content">
+    <a href="{% url 'blog:details' blog.id %}"><h1 id="title">{{ blog.title }}</h1></a>
+    {{ blog.date|date:'M d Y' }}
+    <h3>{{ blog.description|truncatechars:100 }}</h3>
+</div>
+
+{% endfor %}
+
+
+
+{% endblock %}
